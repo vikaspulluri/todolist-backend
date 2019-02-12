@@ -1,8 +1,0 @@
-{
-    "env":{
-        "MONGO_ATLAS_PW": "XXP6uiKphJ3Mnef",
-        "JWT_KEY":"kaushal_army",
-        "AUTH_MAIL_USER": "contacts.meanpro@gmail.com",
-        "AUTH_MAIL_PASS": "DARLING@123"
-    }
-}

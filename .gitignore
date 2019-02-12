@@ -7,7 +7,7 @@
 
 # dependencies
 /node_modules
-/backend/nodemon.json
+/nodemon.json
 
 # IDEs and editors
 /.idea
