@@ -4,8 +4,8 @@
   "description": "TODO List API Documentation",
   "title": "TODO List API",
   "author": "Vikas Pulluri",
-  "created": "11-11-2018",
-  "url": "",
+  "created": "01-01-2019",
+  "url": "http://todolistsapi.meanpro.com",
   "order": [
     "User",
     "List",
@@ -19,7 +19,7 @@
   "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2019-02-15T20:28:59.179Z",
+    "time": "2019-02-15T20:33:18.150Z",
     "url": "http://apidocjs.com",
     "version": "0.17.7"
   }
