@@ -17,6 +17,8 @@ const users = require('../models/user-model');
  * @apiParam {String} lastName  Last Name
  * @apiParam {String} email Email
  * @apiParam {String} password Password
+ * @apiParam {String} country Country
+ * @apiParam {String[]} [phone] Phone Numbers
  *
  * @apiHeader {String} [isadmin] Create an account with admin previleges
  *
@@ -29,7 +31,9 @@ const users = require('../models/user-model');
  *          "userId": "5b9ff8f4558ca01054196469",
  *          "firstName": "Vikas",
  *          "lastName": "Pulluri",
- *          "email": "vikasiiitn@gmail.com"
+ *          "email": "vikasiiitn@gmail.com",
+ *          "country": "India",
+ *          "phone": [91 9494336401]
  *      }
  *@apiErrorExample {json} Error Response-1
  *    HTTP/1.1 400 BAD REQUEST
@@ -137,6 +141,7 @@ router.post('/login', userController.loginUser);
  *          "lastName": "Pulluri",
  *          "email": "vikasiiitn@gmail.com",
  *          "createdOn": "2018-09-10T18:28:32.000Z",
+ *          "country": "India",
  *          "phone": [
  *              9494336401
  *           ]
@@ -152,6 +157,7 @@ router.post('/login', userController.loginUser);
  */
 router.get('/@self', decodeToken, checkUser, userController.getUser);
 
+// only for admin purpose
 router.get('/all-users', decodeToken, checkUser, userController.getAllUsers);
 
 /**

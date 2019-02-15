@@ -36,6 +36,7 @@ exports.createUser = (req, res, next) => {
                         lastName: result.lastName,
                         email: result.email,
                         phone: result.phone,
+                        country: result.country
                     };
                     let response = new SuccessResponseBuilder('User created successfully!!!')
                                         .status(201)
@@ -111,6 +112,8 @@ exports.getUser = (req, res, next) => {
                 lastName: result.lastName,
                 email: result.email,
                 createdOn: result.createdDate,
+                country: result.country,
+                phone: result.phone
             }
             let friends = [...new Set(result.friends)];
             User.find({'_id': {$in: friends}}, {firstName:1, lastName:1, _id: 1})
