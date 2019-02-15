@@ -8,6 +8,8 @@ const userSchema = mongoose.Schema({
     email: {type: String, required: true, unique: true},
     password: {type: String, required: true},
     createdDate: {type: Date, default: Date.now, required: false},
+    country: {type: String, required: true},
+    phone: {type: [String], required: false},
     hasAdminPrevilieges: {type: Boolean, default: false},
     notifications: [{
       message: {type:String, required: true},

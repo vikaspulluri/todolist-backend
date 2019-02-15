@@ -10,7 +10,7 @@ const logger = require('../libraries/log-message');
 const mailService = require('../libraries/mail-service');
 
 exports.createUser = (req, res, next) => {
-    let reqValidity = validateRequest(req, 'email','firstName','lastName','password');
+    let reqValidity = validateRequest(req, 'email','firstName','lastName','password', 'country');
     if(reqValidity.includes(false)) {
         let error = new ErrorResponseBuilder('Invalid request').errorType('DataValidationError').status(400).errorCode('UC-CU-1').build();
         return next(error);
@@ -25,6 +25,8 @@ exports.createUser = (req, res, next) => {
                     password: hash,
                     createdDate: dateUtility.formatDate(),
                     hasAdminPrevilieges: isAdmin,
+                    country: req.body.country,
+                    phone: req.body.phone || []
                 });
                 user.save()
                 .then(result => {
@@ -296,8 +298,8 @@ exports.resetPassword = (req, res, next) => {
     decodedToken = jwt.verify(token, process.env.JWT_KEY);
     let email = decodedToken.email;
     bcrypt.hash(req.body.newPassword, 12)
-          .then(password => {
-            User.findOneAndUpdate({email: email},{password: password})
+          .then(hash => {
+            User.findOneAndUpdate({email: email},{password: hash})
                 .then(result => {
                   let jsonResponse = new SuccessResponseBuilder('Password updated successfully!!! Please login with your new password...').data().build();
                   res.status(200).send(jsonResponse);
